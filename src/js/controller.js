@@ -26,7 +26,8 @@ const controlRecipes = async function () {
 
 const controlServings = function (newServings) {
   const newRecipe = model.updateServings(newServings);
-  RecipeView.render(newRecipe);
+  // RecipeView.render(newRecipe);
+  RecipeView.update(newRecipe);
 };
 
 const controlSearchResults = async function () {

@@ -24,6 +24,34 @@ export class View {
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
   }
 
+  update(data) {
+    this._data = data;
+    const newMarkup = this._generateMarkup();
+    const newDOM = document.createRange().createContextualFragment(newMarkup);
+    // console.log(newDOM);
+    const newElements = Array.from(newDOM.querySelectorAll('*'));
+    const currElements = Array.from(this._parentEl.querySelectorAll('*'));
+
+    newElements.forEach((newEl, i) => {
+      const currEl = currElements[i];
+      // update changed text
+      if (
+        !newEl.isEqualNode(currEl) &&
+        newEl.firstChild?.nodeValue.trim() !== ''
+      ) {
+        currEl.textContent = newEl.textContent;
+        // console.log(newEl, currEl);
+      }
+      // update changed attributes
+      if (!newEl.isEqualNode(currEl)) {
+        Array.from(newEl.attributes).forEach((attr, i) => {
+          // console.log(attr, currEl.attributes[i]);
+          currEl.setAttribute(attr.name, attr.value);
+        });
+      }
+    });
+  }
+
   renderError(message = this._errorMessage) {
     const markup = `
       <div class="error">
