@@ -67,8 +67,8 @@ export const getSearchResultsPage = function (page = state.search.currentPage) {
   return state.search.results.slice(start, end);
 };
 
-export const getStateSearch = function () {
-  return state.search;
+export const getStateProperty = function (property) {
+  return state[property];
 };
 
 export const updateServings = function (newServings) {
@@ -91,6 +91,13 @@ export const updateBookmarks = function () {
     state.recipe.isBookmarked = true;
   }
 
+  localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
+
   // console.log(state.bookmarks);
-  return state.recipe;
+  return [state.recipe, state.bookmarks];
+};
+
+export const loadBookmarks = function () {
+  const localBookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+  if (localBookmarks) state.bookmarks = localBookmarks;
 };
