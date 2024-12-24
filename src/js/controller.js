@@ -32,6 +32,11 @@ const controlServings = function (newServings) {
   RecipeView.update(newRecipe);
 };
 
+const controlBookmark = function () {
+  const recipe = model.updateBookmarks();
+  RecipeView.update(recipe);
+};
+
 const controlSearchResults = async function () {
   try {
     const query = SearchView.getQuery();
@@ -58,6 +63,7 @@ const controlPagination = function (goToPage) {
 const init = function () {
   RecipeView.addHandlerRender(controlRecipes);
   RecipeView.addHandlerServings(controlServings);
+  RecipeView.addHandlerBookmark(controlBookmark);
   SearchView.addHandlerSearch(controlSearchResults);
   PaginationView.addHandlerClick(controlPagination);
 };
