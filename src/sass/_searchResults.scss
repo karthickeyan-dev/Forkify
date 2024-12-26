@@ -10,9 +10,12 @@
 }
 
 .pagination {
+  display: flex;
   margin-top: auto;
   padding: 0 3.5rem;
-
+  align-items: center;
+  justify-content: center;
+  position: relative;
   &::after {
     content: '';
     display: table;
@@ -21,10 +24,17 @@
 
   &__btn {
     &--prev {
-      float: left;
+      position: absolute;
+      left: 3.6rem;
+    }
+    &--curr {
+      color: $color-primary;
+      font-size: 1.3rem;
+      font-weight: 600;
     }
     &--next {
-      float: right;
+      position: absolute;
+      right: 3.6rem;
     }
   }
 }
