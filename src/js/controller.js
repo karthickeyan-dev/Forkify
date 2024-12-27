@@ -6,8 +6,8 @@ import PaginationView from './view/paginationView.js';
 import BookmarksView from './view/bookmarksView.js';
 import AddRecipeView from './view/addRecipeView.js';
 
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+// import 'core-js/stable';
+// import 'regenerator-runtime/runtime';
 import addRecipeView from './view/addRecipeView.js';
 
 ///////////////////////////////////////
